@@ -1,0 +1,36 @@
+clear
+figlet sastra
+
+echo "Menu:"
+echo "1) Track IP"
+echo "2) doksli nomer and gmail Website"
+echo "3) Lihat IP Sendiri"
+echo "4) Install sudo di Void Linux"
+echo "0) Keluar"
+
+read -p "Pilih opsi: " pilihan
+
+case $pilihan in
+    1)
+        read -p "Masukkan IP yang ingin dilacak: " ip
+        curl http://ipinfo.io/$ip
+        ;;
+    2)
+        read -p "Masukkan nama domain (contoh: google.com): " domain
+        whois $domain
+        ;;
+    3)
+        curl http://ipinfo.io/ip
+        ;;
+    4)
+        sudo xbps-install -S sudo
+        echo "Sudo telah diinstal!"
+        ;;
+    0)
+        echo "Keluar..."
+        exit 0
+        ;;
+    *)
+        echo "Pilihan tidak valid!"
+        ;;
+esac
